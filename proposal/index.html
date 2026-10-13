@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Love Story & Proposal 💖 | Photos, Letter & Forever</title>
+    <meta name="description" content="A romantic, interactive experience featuring photo memories, a handwritten love letter, favorite date treats, and a forever question.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Dancing+Script:wght@600;700&family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- 60FPS Ambient Particle Canvas (Floating Hearts & Confetti Fireworks) -->
+    <canvas id="canvas"></canvas>
+
+    <!-- Ambient Glowing Background Blurs -->
+    <div class="ambient-glow glow-1"></div>
+    <div class="ambient-glow glow-2"></div>
+
+    <!-- Top Floating Glass Navigation Header -->
+    <header class="top-nav-bar">
+        <div class="nav-container">
+            <nav class="nav-pills" id="nav-pills" aria-label="Main section navigation">
+                <!-- Sliding Indicator Pill -->
+                <div class="nav-indicator" id="nav-indicator"></div>
+
+                <button class="nav-btn active" id="tab-photos" data-section="photos" aria-label="Section 1: Photos">
+                    <span class="nav-icon">📸</span>
+                    <span class="nav-label">1. Photos</span>
+                </button>
+                <button class="nav-btn" id="tab-letter" data-section="letter" aria-label="Section 2: Letter">
+                    <span class="nav-icon">💌</span>
+                    <span class="nav-label">2. Letter</span>
+                </button>
+                <button class="nav-btn" id="tab-food" data-section="food" aria-label="Section 3: Favorite Food">
+                    <span class="nav-icon">🍕</span>
+                    <span class="nav-label">3. Favorite Food</span>
+                </button>
+                <button class="nav-btn" id="tab-proposal" data-section="proposal" aria-label="Section 4: Forever Question">
+                    <span class="nav-icon">💍</span>
+                    <span class="nav-label">4. Forever?</span>
+                </button>
+            </nav>
+
+            <!-- Music Box Toggle with Animated Equalizer Bars -->
+            <button class="music-toggle-btn" id="music-toggle" title="Play romantic music box melody" aria-label="Toggle romantic music">
+                <div class="equalizer-bars" id="equalizer-bars">
+                    <span class="eq-bar"></span>
+                    <span class="eq-bar"></span>
+                    <span class="eq-bar"></span>
+                </div>
+                <span class="music-label" id="music-label">Music Box</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Content Container with Smooth Transitions -->
+    <main class="main-wrapper" id="main-content">
+
+        <!-- ==============================================
+             SECTION 1: YOUR PHOTOS (POLAROID GALLERY)
+             ============================================== -->
+        <section class="section-container active" id="section-photos" data-title="Photos">
+            <div class="glass-card">
+                <header class="section-header">
+                    <span class="section-pill">Chapter I • Sweet Memories</span>
+                    <h1 class="editorial-title">Moments That Stole My Heart</h1>
+                    <p class="section-desc">Every single picture with you holds a thousand beats of my heart. Here are a few of my favorite memories.</p>
+                </header>
+
+                <!-- Filter Tags -->
+                <div class="photo-tags" id="photo-tags">
+                    <button class="tag-pill active" data-filter="all">All Memories (5)</button>
+                    <button class="tag-pill" data-filter="golden">Sunsets 🌅</button>
+                    <button class="tag-pill" data-filter="smile">Smiles ✨</button>
+                    <button class="tag-pill" data-filter="date">Coffee Dates ☕</button>
+                </div>
+
+                <!-- Polaroid Gallery Grid -->
+                <div class="polaroid-grid" id="polaroid-grid">
+                    <!-- Polaroid 4 -->
+                    <article class="polaroid-item tilt-left" data-category="smile" id="polaroid-4">
+                        <div class="tape-strip"></div>
+                        <div class="polaroid-image-frame" data-img="images/photo4.jpg" data-caption="Farewell Queen 👑 — The night you lit up the room in red and stole every heart in the crowd.">
+                            <img src="images/photo4.jpg" alt="Girl in red dress at Farewell 2026" class="polaroid-photo" loading="lazy">
+                            <span class="zoom-badge">🔍 Zoom In</span>
+                        </div>
+                        <div class="polaroid-meta">
+                            <h3 class="polaroid-heading">Farewell Queen 👑</h3>
+                            <p class="polaroid-quote">"You walked in and the whole room held its breath — I know I did."</p>
+                            <div class="polaroid-bottom">
+                                <span class="polaroid-stamp">Farewell 2026 • Red & Radiant</span>
+                                <button class="like-counter-btn" id="like-btn-4" aria-label="Like photo">
+                                    <span class="heart-ico">❤️</span>
+                                    <span class="like-number" id="count-4">256</span>
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Polaroid 5 -->
+                    <article class="polaroid-item tilt-straight" data-category="golden" id="polaroid-5">
+                        <div class="tape-strip"></div>
+                        <div class="polaroid-image-frame" data-img="images/photo5.jpg" data-caption="Rose by the River 🌹 — A quiet afternoon, the water shimmering, and you looking like a dream.">
+                            <img src="images/photo5.jpg" alt="Girl with rose by the riverside" class="polaroid-photo" loading="lazy">
+                            <span class="zoom-badge">🔍 Zoom In</span>
+                        </div>
+                        <div class="polaroid-meta">
+                            <h3 class="polaroid-heading">Rose by the River 🌹</h3>
+                            <p class="polaroid-quote">"Even the river paused to admire you that afternoon."</p>
+                            <div class="polaroid-bottom">
+                                <span class="polaroid-stamp">Riverside Walk • Golden Afternoon</span>
+                                <button class="like-counter-btn" id="like-btn-5" aria-label="Like photo">
+                                    <span class="heart-ico">❤️</span>
+                                    <span class="like-number" id="count-5">198</span>
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Polaroid 6 -->
+                    <article class="polaroid-item tilt-right" data-category="golden" id="polaroid-6">
+                        <div class="tape-strip"></div>
+                        <div class="polaroid-image-frame" data-img="images/photo6.jpg" data-caption="Temple Steps ✨ — Ancient stones, soft sunlight, and the most beautiful girl I've ever seen.">
+                            <img src="images/photo6.jpg" alt="Girl in pink kurti on temple steps" class="polaroid-photo" loading="lazy">
+                            <span class="zoom-badge">🔍 Zoom In</span>
+                        </div>
+                        <div class="polaroid-meta">
+                            <h3 class="polaroid-heading">Temple Steps ✨</h3>
+                            <p class="polaroid-quote">"Ancient stones have witnessed centuries — but never someone as breathtaking as you."</p>
+                            <div class="polaroid-bottom">
+                                <span class="polaroid-stamp">Heritage Trip • Pink & Graceful</span>
+                                <button class="like-counter-btn" id="like-btn-6" aria-label="Like photo">
+                                    <span class="heart-ico">❤️</span>
+                                    <span class="like-number" id="count-6">174</span>
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Polaroid 7 -->
+                    <article class="polaroid-item tilt-left" data-category="smile" id="polaroid-7">
+                        <div class="tape-strip"></div>
+                        <div class="polaroid-image-frame" data-img="images/photo7.jpg" data-caption="Garden Dreamer 🌿 — The softest smile, the gentlest soul — my favourite person in every universe.">
+                            <img src="images/photo7.jpg" alt="Girl smiling in the garden" class="polaroid-photo" loading="lazy">
+                            <span class="zoom-badge">🔍 Zoom In</span>
+                        </div>
+                        <div class="polaroid-meta">
+                            <h3 class="polaroid-heading">Garden Dreamer 🌿</h3>
+                            <p class="polaroid-quote">"That smile of yours could outshine every flower in the garden."</p>
+                            <div class="polaroid-bottom">
+                                <span class="polaroid-stamp">Garden Days • Soft & Sweet</span>
+                                <button class="like-counter-btn" id="like-btn-7" aria-label="Like photo">
+                                    <span class="heart-ico">❤️</span>
+                                    <span class="like-number" id="count-7">311</span>
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Polaroid 8 -->
+                    <article class="polaroid-item tilt-straight" data-category="smile" id="polaroid-8">
+                        <div class="tape-strip"></div>
+                        <div class="polaroid-image-frame" data-img="images/photo8.jpg" data-caption="That Little Smile 😊 — You do that thing where you try not to smile… and it gets me every single time.">
+                            <img src="images/photo8.jpg" alt="Girl smiling and pointing at cheek in garden" class="polaroid-photo" loading="lazy">
+                            <span class="zoom-badge">🔍 Zoom In</span>
+                        </div>
+                        <div class="polaroid-meta">
+                            <h3 class="polaroid-heading">That Little Smile 😊</h3>
+                            <p class="polaroid-quote">"That one smile — it's the reason I fell, and I never want to get back up."</p>
+                            <div class="polaroid-bottom">
+                                <span class="polaroid-stamp">Garden Vibes • Sunshine & Joy</span>
+                                <button class="like-counter-btn" id="like-btn-8" aria-label="Like photo">
+                                    <span class="heart-ico">❤️</span>
+                                    <span class="like-number" id="count-8">427</span>
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- Custom Photo Dropzone & Upload Helper -->
+                <div class="custom-photo-uploader">
+                    <label for="custom-file-input" class="upload-trigger-btn" id="upload-trigger">
+                        <span class="upload-ico">📷</span>
+                        <span class="upload-text">Add Your Own Memory Photo</span>
+                        <input type="file" id="custom-file-input" accept="image/*" class="sr-only">
+                    </label>
+                    <p class="upload-hint">Upload any personal photo together to add it straight to this memory wall!</p>
+                </div>
+
+                <!-- Next Navigation Step -->
+                <div class="stepper-footer">
+                    <button class="primary-action-btn glow-effect" id="btn-to-letter">
+                        <span>Read My Heartfelt Letter 💌</span>
+                        <span class="btn-arrow">➔</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==============================================
+             SECTION 2: LOVE LETTER (3D ENVELOPE & PARCHMENT)
+             ============================================== -->
+        <section class="section-container" id="section-letter" data-title="Letter">
+            <div class="glass-card">
+                <header class="section-header">
+                    <span class="section-pill">Chapter II • From My Soul</span>
+                    <h1 class="editorial-title">A Letter Written For You</h1>
+                    <p class="section-desc">Click the wax seal to open this envelope and read what my heart whispers every day.</p>
+                </header>
+
+                <!-- Interactive 3D Envelope Container -->
+                <div class="envelope-scene" id="envelope-scene">
+                    <div class="envelope-3d" id="envelope-box">
+                        <!-- Top Flap -->
+                        <div class="envelope-top-flap" id="envelope-flap"></div>
+                        <!-- Envelope Pocket / Front -->
+                        <div class="envelope-front-pocket">
+                            <div class="pocket-left"></div>
+                            <div class="pocket-right"></div>
+                            <div class="pocket-bottom"></div>
+                        </div>
+                        <!-- Wax Seal Stamp -->
+                        <div class="wax-seal-button" id="wax-seal" role="button" tabindex="0" title="Click to break seal and open letter">
+                            <div class="wax-seal-inner">
+                                <span class="wax-heart-icon">💖</span>
+                                <span class="wax-text">UNSEAL</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide-Out Parchment Letter Paper -->
+                    <article class="parchment-sheet" id="parchment-sheet">
+                        <div class="letter-filigree-border">
+                            <div class="letter-header-row">
+                                <span class="letter-stamp-badge">🌹 Special Delivery</span>
+                                <span class="letter-date" id="letter-current-date">October 2026</span>
+                            </div>
+
+                            <div class="letter-body-text">
+                                <p class="salutation">
+                                    Dear <span class="editable-name" id="recipient-name" contenteditable="true" title="Click to edit partner name">Ananya</span>, ❤️
+                                </p>
+                                <p class="letter-paragraph">
+                                    Ami jani amader moddhe differences ache, ar majhe majhe amar kothay tomake koshto dei. Kintu ami tomar jonno nijeke better person banate chai.
+                                </p>
+                                <p class="letter-paragraph">
+                                    Rag, obhiman, jhogra — sobkichur poreo ami tomar pashe thakte chai. ❤️
+                                </p>
+                                <p class="letter-paragraph">
+                                    Ami sudhu ekta sujog chai, tomar haat dhorar. Bhalo-kharap protita somoy tomar pashe thakte chai — tomar best friend, supporter ar trusted partner hoye.
+                                </p>
+                                <p class="letter-paragraph">
+                                    Ami perfect noi, perfect love story-o promise korte parbo na. Kintu tomake happy, safe ar special feel koranor jonno amar best debo. ❤️
+                                </p>
+                                <p class="letter-paragraph">
+                                    Ami sudhu tomar present noy, tomar happiness ar future-er ekta part hote chai.
+                                </p>
+                                <p class="letter-paragraph">
+                                    Sudhu ekbar amake tomar pashe thakar sujog dio. ❤️
+                                </p>
+                                <div class="letter-signoff">
+                                    <p class="valediction">Yours,</p>
+                                    <p class="signature-calligraphy" id="sender-signature">Suman ❤️</p>
+                                </div>
+                            </div>
+
+                            <!-- P.S. Customizable Love Note -->
+                            <div class="ps-note-card">
+                                <div class="ps-note-header">
+                                    <span class="ps-label">P.S.</span>
+                                    <button class="edit-ps-link" id="edit-ps-toggle">✏️ Customize Note</button>
+                                </div>
+                                <p class="ps-content" id="ps-message-display">
+                                    “You are my favorite thought every morning and my sweetest dream every night.”
+                                </p>
+                                <div class="ps-edit-inline hidden" id="ps-edit-inline">
+                                    <input type="text" id="ps-custom-input" class="ps-text-input" placeholder="Write your personalized love note..." maxlength="120">
+                                    <button class="save-ps-btn" id="save-ps-btn">Save Note ✨</button>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- Navigation Controls -->
+                <div class="stepper-footer split-footer">
+                    <button class="secondary-action-btn" id="btn-back-to-photos">
+                        <span class="btn-arrow">⬅️</span>
+                        <span>Back to Photos</span>
+                    </button>
+                    <button class="primary-action-btn glow-effect" id="btn-to-food">
+                        <span>Our Favorite Food 🍕</span>
+                        <span class="btn-arrow">➔</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==============================================
+             SECTION 3: FAVORITE FOOD (DATE NIGHT CRAVINGS)
+             ============================================== -->
+        <section class="section-container" id="section-food" data-title="Food">
+            <div class="glass-card">
+                <header class="section-header">
+                    <span class="section-pill">Chapter III • Delicious Dates</span>
+                    <h1 class="editorial-title">Your Favorite Treats & Cravings</h1>
+                    <p class="section-desc">Nothing spells true love quite like stealing bites and sharing dream dinners together. Pick our next date treat!</p>
+                </header>
+
+                <!-- Food Cards Grid -->
+                <div class="food-cards-grid" id="food-cards-grid">
+                    <!-- Food Card 1 -->
+                    <article class="food-card" id="food-card-1" data-name="Cheesy Artisanal Pizza 🍕">
+                        <div class="food-image-wrapper" data-img="images/food1.jpg" data-caption="Gourmet Artisanal Pizza — Crisp wood-fired crust with bubbling mozzarella and fresh basil.">
+                            <img src="images/food1.jpg" alt="Artisanal wood-fired cheese pizza" class="food-img-asset" loading="lazy">
+                            <span class="food-badge-tag">Always Steals Last Slice</span>
+                            <span class="zoom-badge">🔍 Zoom</span>
+                        </div>
+                        <div class="food-content">
+                            <div class="food-rating">⭐⭐⭐⭐⭐ <span>(Cravings Match 100%)</span></div>
+                            <h3 class="food-name">Crispy Cheesy Pizza 🍕</h3>
+                            <p class="food-description">Wood-fired blistered crust with melted stretchy mozzarella and fresh aromatic basil. You claim you're not that hungry, then finish half the pie!</p>
+                            <div class="food-love-quote">“I promise to always save the cheesy crust for you.”</div>
+                            <button class="select-date-btn" id="date-pick-1" data-food="Cheesy Pizza 🍕">
+                                <span class="check-icon">✓</span>
+                                <span class="btn-text">Select For Our Next Date 💖</span>
+                            </button>
+                        </div>
+                    </article>
+
+                    <!-- Food Card 2 -->
+                    <article class="food-card" id="food-card-2" data-name="Molten Lava Cake 🍫">
+                        <div class="food-image-wrapper" data-img="images/food2.jpg" data-caption="Warm Molten Chocolate Lava Cake — Decadent chocolate river with cold vanilla ice cream & raspberries.">
+                            <img src="images/food2.jpg" alt="Decadent molten chocolate lava cake with ice cream" class="food-img-asset" loading="lazy">
+                            <span class="food-badge-tag">Sweet Tooth Craving</span>
+                            <span class="zoom-badge">🔍 Zoom</span>
+                        </div>
+                        <div class="food-content">
+                            <div class="food-rating">⭐⭐⭐⭐⭐ <span>(Sweetness Overload)</span></div>
+                            <h3 class="food-name">Molten Lava Cake 🍫</h3>
+                            <p class="food-description">Warm gooey dark chocolate pouring from the center, paired with cold melting vanilla ice cream and fresh tart raspberries.</p>
+                            <div class="food-love-quote">“Irresistible and sweet, just like your smile.”</div>
+                            <button class="select-date-btn" id="date-pick-2" data-food="Molten Lava Cake 🍫">
+                                <span class="check-icon">✓</span>
+                                <span class="btn-text">Select For Our Next Date 💖</span>
+                            </button>
+                        </div>
+                    </article>
+
+                    <!-- Food Card 3 -->
+                    <article class="food-card" id="food-card-3" data-name="Creamy Truffle Pasta 🍝">
+                        <div class="food-image-wrapper" data-img="images/food3.jpg" data-caption="Creamy Truffle Fettuccine Alfredo — Silky pasta twirled under candlelit romantic vibes.">
+                            <img src="images/food3.jpg" alt="Creamy Italian pasta under warm candlelight" class="food-img-asset" loading="lazy">
+                            <span class="food-badge-tag">Romantic Candlelight</span>
+                            <span class="zoom-badge">🔍 Zoom</span>
+                        </div>
+                        <div class="food-content">
+                            <div class="food-rating">⭐⭐⭐⭐⭐ <span>(Cozy Comfort Vibes)</span></div>
+                            <h3 class="food-name">Creamy Truffle Pasta 🍝</h3>
+                            <p class="food-description">Silky fettuccine twirled in rich parmesan cream, black pepper, and warm candlelight. The ultimate romantic dinner comfort food.</p>
+                            <div class="food-love-quote">“Warm, luxurious, and perfection in every bite.”</div>
+                            <button class="select-date-btn" id="date-pick-3" data-food="Creamy Truffle Pasta 🍝">
+                                <span class="check-icon">✓</span>
+                                <span class="btn-text">Select For Our Next Date 💖</span>
+                            </button>
+                        </div>
+                    </article>
+
+                    <!-- Food Card 4 -->
+                    <article class="food-card" id="food-card-4" data-name="Spicy Fuchka 🫧">
+                        <div class="food-image-wrapper" data-img="images/food4.jpg" data-caption="Kolkata Street Fuchka — Crispy hollow puris bursting with tangy tamarind water and spiced filling.">
+                            <img src="images/food4.jpg" alt="Crispy Bengali fuchka pani puri with tamarind water" class="food-img-asset" loading="lazy">
+                            <span class="food-badge-tag">Street Food Obsession</span>
+                            <span class="zoom-badge">🔍 Zoom</span>
+                        </div>
+                        <div class="food-content">
+                            <div class="food-rating">⭐⭐⭐⭐⭐ <span>(Tangy Perfection)</span></div>
+                            <h3 class="food-name">Spicy Fuchka 🫧</h3>
+                            <p class="food-description">Crispy hollow puris filled with spiced mashed potato and chickpeas, dunked in the most perfectly tangy tamarind pani water. The kind you eat 20 of and still want more!</p>
+                            <div class="food-love-quote">"Every bite of fuchka with you is my favorite kind of chaos."</div>
+                            <button class="select-date-btn" id="date-pick-4" data-food="Fuchka 🫧">
+                                <span class="check-icon">✓</span>
+                                <span class="btn-text">Select For Our Next Date 💖</span>
+                            </button>
+                        </div>
+                    </article>
+
+                    <!-- Food Card 5 -->
+                    <article class="food-card" id="food-card-5" data-name="Kolkata Biryani 🍛">
+                        <div class="food-image-wrapper" data-img="images/food5.jpg" data-caption="Kolkata Chicken Biryani — Fragrant saffron rice with tender chicken, potato and boiled egg in a clay handi.">
+                            <img src="images/food5.jpg" alt="Fragrant Kolkata biryani with chicken potato and egg" class="food-img-asset" loading="lazy">
+                            <span class="food-badge-tag">Sharing Is Caring</span>
+                            <span class="zoom-badge">🔍 Zoom</span>
+                        </div>
+                        <div class="food-content">
+                            <div class="food-rating">⭐⭐⭐⭐⭐ <span>(Pure Soul Food)</span></div>
+                            <h3 class="food-name">Kolkata Biryani 🍛</h3>
+                            <p class="food-description">Aromatic saffron-kissed basmati rice layered with juicy chicken, the iconic aloo, and a perfectly halved egg. Kolkata's most beloved comfort food — best shared between two.</p>
+                            <div class="food-love-quote">"Like us — perfectly layered, full of warmth, and worth every moment."</div>
+                            <button class="select-date-btn" id="date-pick-5" data-food="Kolkata Biryani 🍛">
+                                <span class="check-icon">✓</span>
+                                <span class="btn-text">Select For Our Next Date 💖</span>
+                            </button>
+                        </div>
+                    </article>
+
+                    <!-- Food Card 6 -->
+                    <article class="food-card" id="food-card-6" data-name="Egg Roll 🌯">
+                        <div class="food-image-wrapper" data-img="images/food6.jpg" data-caption="Kolkata Egg Roll — Flaky paratha wrap with egg, crispy onion, green chilli and a drizzle of sauce.">
+                            <img src="images/food6.jpg" alt="Kolkata street style egg roll paratha wrap" class="food-img-asset" loading="lazy">
+                            <span class="food-badge-tag">Street Snack Goals</span>
+                            <span class="zoom-badge">🔍 Zoom</span>
+                        </div>
+                        <div class="food-content">
+                            <div class="food-rating">⭐⭐⭐⭐⭐ <span>(Late-Night Craving)</span></div>
+                            <h3 class="food-name">Egg Roll 🌯</h3>
+                            <p class="food-description">Golden flaky paratha rolled around a fried egg, crisp raw onion rings, green chillies, cucumber and a generous drizzle of chilli sauce. The ultimate Kolkata street food experience.</p>
+                            <div class="food-love-quote">"Simple, satisfying, and so much better shared with you."</div>
+                            <button class="select-date-btn" id="date-pick-6" data-food="Egg Roll 🌯">
+                                <span class="check-icon">✓</span>
+                                <span class="btn-text">Select For Our Next Date 💖</span>
+                            </button>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- Date Night Live Itinerary Box -->
+                <div class="date-itinerary-card" id="date-itinerary-box">
+                    <div class="itinerary-icon">🥂</div>
+                    <div class="itinerary-details">
+                        <h4 class="itinerary-title">Our Date Night Menu Planner:</h4>
+                        <p class="itinerary-text" id="itinerary-status-text">Click "Select For Our Next Date" on any treat above to lock in our dinner date menu!</p>
+                    </div>
+                </div>
+
+                <!-- Navigation Controls -->
+                <div class="stepper-footer split-footer">
+                    <button class="secondary-action-btn" id="btn-back-to-letter">
+                        <span class="btn-arrow">⬅️</span>
+                        <span>Back to Letter</span>
+                    </button>
+                    <button class="primary-action-btn glow-effect" id="btn-to-proposal">
+                        <span>The One Big Question 💍</span>
+                        <span class="btn-arrow">➔</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==============================================
+             SECTION 4: THE BIG QUESTION & FOREVER
+             ============================================== -->
+        <section class="section-container" id="section-proposal" data-title="Proposal">
+            <!-- Step A: The Big Question -->
+            <div class="glass-card proposal-modal-card" id="proposal-step-card">
+                <div class="ring-box-anim">
+                    <div class="ring-icon-wrap heartbeat-pulse">💍</div>
+                    <div class="ring-sparkles">✨</div>
+                </div>
+
+                <span class="section-pill">Chapter IV • The Final Question</span>
+                <h1 class="editorial-title shimmer-gold">Will You Be My Forever?</h1>
+                <p class="proposal-lead-text">
+                    Through every silly laugh, every warm embrace, our cozy dinner dates, and all the adventures waiting for us...
+                    Will you take my hand and be mine for all of tomorrow?
+                </p>
+
+                <!-- Interactive Runaway Buttons Playground -->
+                <div class="proposal-button-zone" id="button-playground">
+                    <button id="yes-btn" class="yes-celebrate-btn glow-effect">
+                        <span class="btn-sparkle">💖</span>
+                        <span class="btn-label-text">Yes, Forever! 💍</span>
+                    </button>
+                    <button id="no-btn" class="no-runaway-btn">
+                        <span class="btn-label-text">No</span>
+                    </button>
+                </div>
+
+                <div class="playful-hint-text" id="no-hint-message"></div>
+
+                <div class="stepper-footer" style="margin-top: 24px;">
+                    <button class="text-link-btn" id="btn-back-to-food">
+                        <span>⬅️ Review Our Journey Together</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Step B: Grand Celebration Keepsake Card -->
+            <div class="glass-card celebration-modal-card hidden" id="celebration-step-card">
+                <div class="celebration-badge-hero bounce-celebration">🥰</div>
+                <span class="section-pill">Official Keepsake • Sealed With Love</span>
+                <h1 class="editorial-title celebration-title">SHE SAID YES! 🎉💖</h1>
+                <p class="celebration-lead-text">
+                    You have made me the happiest person in the entire universe! My heart is dancing with pure joy!
+                </p>
+
+                <!-- Keepsake Quote Box -->
+                <div class="keepsake-quote-box">
+                    <div class="quote-flower-decor">🌸</div>
+                    <p class="calligraphy-quote">“In a room full of art, I would still stare at you.”</p>
+                    <span class="quote-author">— Forever & Always Yours</span>
+                </div>
+
+                <!-- Date & Romance Summary Badges -->
+                <div class="keepsake-badges-row">
+                    <div class="keepsake-pill">💍 Forever Promise Locked</div>
+                    <div class="keepsake-pill">🍕 Date Night Reserved</div>
+                    <div class="keepsake-pill">💌 Heart Sealed For You</div>
+                </div>
+
+                <div class="stepper-footer" style="margin-top: 32px; justify-content: center;">
+                    <button id="replay-btn" class="primary-action-btn glow-effect">
+                        <span>Relive Our Story From The Beginning 🔄</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Lightbox Zoom Modal for High-Resolution Previews -->
+    <div class="lightbox-modal" id="lightbox-modal" aria-hidden="true" role="dialog" aria-modal="true">
+        <div class="lightbox-backdrop" id="lightbox-backdrop"></div>
+        <div class="lightbox-dialog">
+            <button class="lightbox-close-btn" id="lightbox-close" aria-label="Close image preview">✕</button>
+            <div class="lightbox-image-container">
+                <img src="" alt="High resolution preview" class="lightbox-full-img" id="lightbox-full-img">
+            </div>
+            <p class="lightbox-caption-text" id="lightbox-caption-text"></p>
+        </div>
+    </div>
+
+    <!-- Core App Logic -->
+    <script src="script.js"></script>
+</body>
+</html>
